@@ -20,6 +20,7 @@ def main() -> int:
     dest_dir.mkdir(parents=True, exist_ok=True)
     dest = dest_dir / "ya.md"
     shutil.copy2(SRC, dest)
+    dest.chmod(0o644)  # 勿袭源文件之宽限（/mnt/g 等挂载多为 777）
     print(f"✓ 雅已安置：{dest}")
     print(f"  平台：{sys.platform}")
     print("  其后：于 Claude Code 行 /config → Output style → 择 ya；/clear 或新会话方生效。")
