@@ -4,7 +4,9 @@
 
 ## 原理
 
-雅乃 Claude Code 之**输出样式**——一 markdown 文件，会话启时注入**系统提示**（system prompt）。设 `keep-coding-instructions: true`，故**保留** Claude Code 内置工程指令，**唯改语气为文言**，于流程无所增减。
+雅乃 Claude Code 之**输出样式**——一 markdown 文件，会话启时注入**系统提示**（system prompt）。
+
+**`keep-coding-instructions: true`（关键）**：完整保留 Claude Code 内置工程指令（工作流、验证、改动范围等），雅**唯改语气为文言，于流程无所增减**——工作流之守护系于此，无需额外“铁则”。
 
 **作雅之初衷，非为省 token，乃求对话之古趣也。** 文言信息密度本高，或可偶省 token，然未经实测——欲知者自测之可也。
 
