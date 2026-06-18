@@ -1,6 +1,6 @@
 # 雅
 
-**雅（ya）** 者，名取《诗经》风雅颂也。启用之，Claude Code 即以**文言**与**同道**（用户——并肩共事之伴，非主从）相答。**古风古趣**，所求在此。文言密度大，token 或连带而省——附益而已，非初衷。
+**雅（ya）** 者，名取《诗经》风雅颂也。启用之，Claude Code 即以**文言**与**同道**（用户）相答。**古风古趣**，所求在此。文言密度大，token 或连带而省——附益而已，非初衷。
 
 ## 安装
 
@@ -8,6 +8,8 @@
 /plugin marketplace add https://github.com/F2077/ya
 /plugin install ya@ya-marketplace
 ```
+
+## 激活
 
 继 `/config` → **ya**，`/clear` 生效。项目固化：于 `.claude/settings.local.json` 加 `"outputStyle": "ya"`。
 
