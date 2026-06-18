@@ -1,65 +1,44 @@
 # 雅
 
-**雅（ya）** 之名，取自《诗经》风、雅、颂之“雅”。启用后，Claude Code 即以**文言**与**同道**（用户——并肩共事之伴，非主从）相答，**古风古趣**为其所求。文言信息密度本大，token 或连带而省——然非初衷，附益而已。
+**雅（ya）** 者，名取《诗经》风雅颂也。启用之，Claude Code 即以**文言**与**同道**（用户——并肩共事之伴，非主从）相答。**古风古趣**，所求在此。文言密度大，token 或连带而省——附益而已，非初衷。
+
+> 对酒当歌，人生几何。
+> 譬如朝露，去日苦多。
+> 　　　　　　　　——曹操《短歌行》
 
 ## 原理
 
-雅乃 Claude Code 之**输出样式**——一 markdown 文件，会话启时注入**系统提示**（system prompt）。
+输出样式（output style）也。设 `keep-coding-instructions: true`，内置工程指令**尽留**，唯改语气为文言，**不动流程**。
 
-**`keep-coding-instructions: true`（关键）**：完整保留 Claude Code 内置工程指令（工作流、验证、改动范围等），雅**唯改语气为文言，于流程无所增减**——工作流之守护系于此，无需额外“铁则”。
+token 非初衷，未实测，读者自判：
 
-**作雅之初衷，非单为省 token，乃求对话之古风古趣也。** 盖文言信息密度本大，省 token 或为连带之益——具体几何，见下文白对照，读者自判可也。未经实测，欲知者自测之。
+> 文言：「凡写入，先志而后盘。」（8 字）
+> 白话：「所有的写入操作都需要先写日志文件。」（17 字）
 
-> **文白对照**（系统编程场景，示其密度）：
-> - 文言：「凡写入，先志而后盘。若崩于刷盘之际，则回放日志以复其态。」（28 字）
-> - 白话：「所有的写入操作都需要先写 WAL 日志，然后再把数据刷到磁盘。如果刷盘时发生了崩溃，就通过回放日志来恢复。」（52 字）
+## 里程碑
 
-## 里程碑·吟诗
+遇重大节点——大 feature 落成、大 bug 克复——可**赋诗以贺**，**须押韵**。尚慷慨犀利之音，首选曹操《短歌行》、李白《侠客行》，亦可因景易体。
 
-遇**重大节点**（大 feature 落成、大 bug 克复），可**吟诗作赋**以贺——**须押韵**。尚**慷慨犀利**之音，首选**曹操《短歌行》、李白《侠客行》**，亦可因景易体（杜甫沉郁、苏轼旷达、辛弃疾豪放）。详见 `output-styles/ya.md`。
+> 事了拂衣去，深藏身与名。
+> 　　　　　　　　——李白《侠客行》
 
-## 文法之基
+## 文法
 
-文法从《马氏文通》（清·马建忠，1898）正轨：字分实五（名、代、静、动、状）虚四（介、连、助、叹），字无定类、随文生义。**原文见 [ctext.org](https://ctext.org/wiki.pl?if=gb&res=496878&remap=gb)，是为唯一真相。**
-
-**雅以古趣为先，非死磕完美文法；然文法仍尽量求准——不求无疵，但求有据。** 本仓另整理 [`references/文法要略.md`](references/文法要略.md) 一篇（**由 LLM 据《马氏文通》总结而成，非逐字原文；如有出入，以 ctext 原文为准**），备查。
-
-- 样式本体（锚点）：[`output-styles/ya.md`](output-styles/ya.md)
+从《马氏文通》（[ctext 原文](https://ctext.org/wiki.pl?if=gb&res=496878&remap=gb)）。本仓整理 [`文法要略.md`](references/文法要略.md)（LLM 总结，非逐字原文，出入以 ctext 为准）。样式本体：[`ya.md`](output-styles/ya.md)。
 
 ## 安装
-
-**法一·插件（marketplace）**：
 
 ```
 /plugin marketplace add /path/to/ya
 /plugin install ya@ya-marketplace
 ```
 
-**法二·跨平台脚本**（Linux／macOS／Windows，需 Python 3）：
+或 `python3 install.py`，或 `cp output-styles/ya.md ~/.claude/output-styles/ya.md`。
 
-```bash
-python3 install.py        # Windows 下或作 python install.py
-```
-
-**法三·单文件**（手动，Unix）：
-
-```bash
-cp output-styles/ya.md ~/.claude/output-styles/ya.md
-```
-
-继于 Claude Code 中 `/config` → Output style → 选 **ya**，`/clear` 或新会话生效。
-
-> **提示**：欲为某项目固化 ya，可于该项目 `.claude/settings.local.json` 中加 `"outputStyle": "ya"`（项目级覆盖用户级，新会话生效）。
-
-## 例（对话）
-
-> 凡写入，先志而后盘。志者，顺序追加也，原子提交赖之。若崩于刷盘之际，则回放日志以复其态。
+继 `/config` → **ya**，`/clear` 生效。项目固化：于 `.claude/settings.local.json` 加 `"outputStyle": "ya"`。
 
 ## 致敬
 
-- **《诗经》**·风雅颂——“雅”之名所自。
-- **《马氏文通》**——文法参考所本。
+《诗经》赐名，《马氏文通》赐法。
 
-## 许可
-
-MIT，详见 [`LICENSE`](LICENSE)。
+MIT，见 [`LICENSE`](LICENSE)。
