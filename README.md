@@ -11,7 +11,7 @@
 
 ## 启用
 
-继 `/config` → **ya**，`/clear` 或新会话方效。欲固于某项目：于 `.claude/settings.local.json` 加 `"outputStyle": "ya"`。
+`/config` → Output style → **ya**，`/clear` 或新会话方效。欲固于某项目：于 `.claude/settings.local.json` 加 `"outputStyle": "ya"`。
 
 ## 其理
 
