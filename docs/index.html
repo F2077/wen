@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文 — 文言对话 · Claude Code 插件</title>
+  <meta name="description" content="文（wen）者，取文言之意也。启之，Claude Code 即以文言与同道相答。古风古趣，辞约旨丰。以《马氏文通》为骨，SessionStart hook 自动注入，一键即行。" />
+  <meta name="theme-color" content="#f1e6cc" />
+  <meta name="color-scheme" content="light" />
+
+  <link rel="canonical" href="https://f2077.github.io/wen/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='6' width='88' height='88' rx='10' fill='none' stroke='%239c2a1c' stroke-width='7'/%3E%3Ctext x='50' y='55' text-anchor='middle' dominant-baseline='central' font-family='serif' font-size='62' fill='%239c2a1c'%3E%E6%96%87%3C/text%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="文 — 文言对话 · Claude Code 插件" />
+  <meta property="og:description" content="古风古趣，辞约旨丰。以《马氏文通》为骨，Claude Code 文言对话插件。" />
+  <meta property="og:url" content="https://f2077.github.io/wen/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<!--复用鱼尾 SVG（上鱼尾·下鱼尾），以 <defs> 定义，<use> 引用，避重复-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- 上鱼尾：下缘中段上凹，分叉朝下 -->
+    <symbol id="yuwei-top" viewBox="0 0 46 20">
+      <path d="M0 0 H46 V20 H28 L23 12 L18 20 H0 Z" fill="#1b1510"/>
+    </symbol>
+    <!-- 下鱼尾：上缘中段下凹，分叉朝上 -->
+    <symbol id="yuwei-bot" viewBox="0 0 46 20">
+      <path d="M0 20 H46 V0 H28 L23 8 L18 0 H0 Z" fill="#1b1510"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ════════════ 卷首叶（首屏） ════════════ -->
+<section class="leaf frontispiece" id="top">
+  <div class="leaf-inner">
+
+    <!-- 左半叶：竖排题额 -->
+    <div class="face face-left">
+      <div class="vline vline-tagline">辭約旨豐</div>
+      <h1 class="vline vline-title">文</h1>
+      <div class="vline vline-tagline">古風雅趣</div>
+      <div class="vline vline-note">文言对话 · Claude Code</div>
+    </div>
+
+    <!-- 版心 -->
+    <div class="banye" aria-hidden="true">
+      <span class="yuwei"><svg viewBox="0 0 46 20"><use href="#yuwei-top"/></svg></span>
+      <div class="banye-title">文</div>
+      <div class="banye-xiang"></div>
+      <div class="banye-juan">卷之首</div>
+      <span class="yuwei"><svg viewBox="0 0 46 20"><use href="#yuwei-bot"/></svg></span>
+      <div class="banye-ye">一</div>
+    </div>
+
+    <!-- 右半叶：朱文印 -->
+    <div class="face face-right">
+      <div class="seal-wrap">
+        <span class="seal seal-main">
+          <svg viewBox="0 0 100 100" role="img" aria-label="朱文印 · 文">
+            <rect x="5" y="5" width="90" height="90" rx="9" ry="9" fill="none" stroke="#9c2a1c" stroke-width="6.5"/>
+            <text x="50" y="55" text-anchor="middle" dominant-baseline="central" font-family="'Ma Shan Zheng','LXGW WenKai',serif" font-size="62" fill="#9c2a1c">文</text>
+          </svg>
+        </span>
+        <span class="seal seal-sub">
+          <svg viewBox="0 0 100 100" role="img" aria-label="朱文印 · 馬氏文通">
+            <rect x="5" y="5" width="90" height="90" rx="6" ry="6" fill="none" stroke="#9c2a1c" stroke-width="5"/>
+            <line x1="50" y1="14" x2="50" y2="86" stroke="#9c2a1c" stroke-width="1.6" opacity=".45"/>
+            <line x1="14" y1="50" x2="86" y2="50" stroke="#9c2a1c" stroke-width="1.6" opacity=".45"/>
+            <text x="73" y="32" text-anchor="middle" dominant-baseline="central" font-family="'Ma Shan Zheng',serif" font-size="29" fill="#9c2a1c">馬</text>
+            <text x="73" y="70" text-anchor="middle" dominant-baseline="central" font-family="'Ma Shan Zheng',serif" font-size="29" fill="#9c2a1c">氏</text>
+            <text x="27" y="32" text-anchor="middle" dominant-baseline="central" font-family="'Ma Shan Zheng',serif" font-size="29" fill="#9c2a1c">文</text>
+            <text x="27" y="70" text-anchor="middle" dominant-baseline="central" font-family="'Ma Shan Zheng',serif" font-size="29" fill="#9c2a1c">通</text>
+          </svg>
+        </span>
+      </div>
+      <a class="scroll-cue" href="#juan-1">閱 之</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ 各卷 ════════════ -->
+<main class="codex">
+
+  <!-- 卷之一 · 何為 -->
+  <article class="juan reveal" id="juan-1">
+    <header class="juan-head">
+      <span class="yuwei-mini"><svg viewBox="0 0 46 20"><use href="#yuwei-top"/></svg></span>
+      <h2><span class="juan-no">卷之一</span><span class="juan-name">何　為</span></h2>
+    </header>
+    <div class="juan-body">
+      <p>文（wen）者，取<strong>文言</strong>之意也。既启之，Claude Code 遂以文言与子相答——代字用吾、子、其，助字以也、矣、乎煞句，介字、连字皆从古制。</p>
+      <p><em>辞约而旨丰，古风古趣</em>，所求在此耳。且<strong>唯改辞气，不涉工程</strong>——commit、注释、文档诸落盘之物，咸用平实中文或英文，不为文言所染。</p>
+    </div>
+  </article>
+
+  <!-- 卷之二 · 置 -->
+  <article class="juan reveal" id="juan-2">
+    <header class="juan-head">
+      <span class="yuwei-mini"><svg viewBox="0 0 46 20"><use href="#yuwei-top"/></svg></span>
+      <h2><span class="juan-no">卷之二</span><span class="juan-name">置</span></h2>
+    </header>
+    <div class="juan-body">
+      <p>于 Claude Code 中键此二令：</p>
+      <pre class="ke-ban"><code>/plugin marketplace add https://github.com/F2077/wen
+/plugin install wen@wen-marketplace</code></pre>
+      <span class="note-margin">置毕即行，毋需他设。欲止之，键 <code style="font-family:var(--f-mono)">/plugin disable wen</code>。</span>
+    </div>
+  </article>
+
+  <!-- 卷之三 · 理 -->
+  <article class="juan reveal" id="juan-3">
+    <header class="juan-head">
+      <span class="yuwei-mini"><svg viewBox="0 0 46 20"><use href="#yuwei-top"/></svg></span>
+      <h2><span class="juan-no">卷之三</span><span class="juan-name">理</span></h2>
+    </header>
+    <div class="juan-body">
+      <p>以 <code style="font-family:var(--f-mono)">SessionStart</code> hook，于每会话之初，将《马氏文通》之文法注入上下文，每会话一注，后不复加。</p>
+      <p>文法从《马氏文通》正轨：<strong>字类九分、助字煞句、句读有法</strong>。详参同仓 <a href="https://github.com/F2077/wen/blob/main/references/%E6%96%87%E6%B3%95%E8%A6%81%E7%95%A5.md" target="_blank" rel="noopener">文法要略.md</a>。</p>
+    </div>
+  </article>
+
+  <!-- 卷之四 · 耗 -->
+  <article class="juan reveal" id="juan-4">
+    <header class="juan-head">
+      <span class="yuwei-mini"><svg viewBox="0 0 46 20"><use href="#yuwei-top"/></svg></span>
+      <h2><span class="juan-no">卷之四</span><span class="juan-name">耗</span></h2>
+    </header>
+    <div class="juan-body">
+      <p>文之令二千七十五字，折 token 约五百八十五，每会话一注。诸官方样式之费如左：</p>
+      <div class="mu-table-wrap">
+        <table class="mu-table">
+          <thead>
+            <tr><th>插件</th><th>注入 token</th><th>机制</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>explanatory-output-style</code></td><td class="num">~350</td><td>SessionStart hook</td></tr>
+            <tr class="hl"><td><strong>文（wen）</strong></td><td class="num">~585</td><td>SessionStart hook</td></tr>
+            <tr><td><code>learning-output-style</code></td><td class="num">~1,000</td><td>SessionStart hook</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>此五百八十五，入场之费耳。文言<strong>单音为主、虚词严省、句短意合</strong>，每轮较白话约省 30–50%。试观：</p>
+      <div class="compare">
+        <div class="cell">
+          <div class="lbl">白话</div>
+          <div class="val">所有的写入操作都需要先写日志文件</div>
+          <div class="lbl" style="margin-top:6px">十七字 · ~12 token</div>
+        </div>
+        <div class="cell win">
+          <div class="lbl">文言</div>
+          <div class="val">凡写入，先志而后盘</div>
+          <div class="lbl" style="margin-top:6px">九字 · ~6 token</div>
+        </div>
+      </div>
+      <blockquote class="quote-block">古风古趣，本怀也；省 token，余事耳。</blockquote>
+    </div>
+  </article>
+
+  <!-- 卷之五 · 本 -->
+  <article class="juan reveal" id="juan-5">
+    <header class="juan-head">
+      <span class="yuwei-mini"><svg viewBox="0 0 46 20"><use href="#yuwei-top"/></svg></span>
+      <h2><span class="juan-no">卷之五</span><span class="juan-name">本</span></h2>
+    </header>
+    <div class="juan-body">
+      <p><strong>《马氏文通》赐法。</strong>马建忠（1845–1900），字眉叔，清光绪二十四年（1898）出版，中国第一部系统的汉语语法学著作。</p>
+      <p>原文据 <a href="https://ctext.org/wiki.pl?if=gb&res=496878&remap=gb" target="_blank" rel="noopener">Chinese Text Project</a>（Donald Sturgeon 博士创建与维护之数字图书馆）电子化版提炼整理。MIT 许可。</p>
+      <div class="source-list">
+        <a href="https://github.com/F2077/wen" target="_blank" rel="noopener">GitHub 仓库</a>
+        <a href="https://github.com/F2077/wen/blob/main/LICENSE" target="_blank" rel="noopener">MIT 许可</a>
+        <a href="https://github.com/F2077/wen/blob/main/references/%E6%96%87%E6%B3%95%E8%A6%81%E7%95%A5.md" target="_blank" rel="noopener">文法要略</a>
+        <a href="https://ctext.org/wiki.pl?if=gb&res=496878&remap=gb" target="_blank" rel="noopener">Chinese Text Project</a>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<!-- ════════════ 叶脚 / 刊记 ════════════ -->
+<footer class="colophon">
+  <div class="kanji">
+    刊：<span>github.com/F2077/wen</span> · 文 v0.2.0 · MIT · 馬氏文通賜法
+  </div>
+  <div class="ye-mark" aria-label="叶码">終</div>
+  <a class="repo-link" href="https://github.com/F2077/wen" target="_blank" rel="noopener">F2077/wen ▸</a>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
