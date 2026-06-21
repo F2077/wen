@@ -1,17 +1,17 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "ya-marketplace",
-  "description": "雅 — 文言输出样式 marketplace",
+  "name": "wen-marketplace",
+  "description": "文 — 文言输出样式 marketplace",
   "owner": {
-    "name": "ya contributors"
+    "name": "wen contributors"
   },
   "plugins": [
     {
-      "name": "ya",
-      "description": "雅 — 文言（Classical Chinese）输出样式。对话用文言，落盘之物平实，不改流程。追求古风古趣。致敬《诗经》。",
+      "name": "wen",
+      "description": "文 — 文言（Classical Chinese）输出样式。对话用文言，落盘之物平实，不改流程。追求古风古趣。",
       "source": ".",
       "category": "productivity",
-      "homepage": "https://github.com/F2077/ya"
+      "homepage": "https://github.com/F2077/wen"
     }
   ]
 }

@@ -1,17 +1,17 @@
-# 雅
+# 文
 
-**雅（ya）** 者，名取《诗经》也。启之，Claude Code 即以**文言**与**同道**（用户）相答。**古风古趣**，所求在此。文言辞约而旨丰，token 或并省焉，附益而已。
+**文（wen）** 者，名取文言也。启之，Claude Code 即以**文言**与**同道**（用户）相答。**古风古趣**，所求在此。文言辞约而旨丰，token 或并省焉，附益而已。
 
 ## 置
 
 ```
-/plugin marketplace add https://github.com/F2077/ya
-/plugin install ya@ya-marketplace
+/plugin marketplace add https://github.com/F2077/wen
+/plugin install wen@wen-marketplace
 ```
 
 ## 启
 
-`/config` → Output style → **ya**，`/clear` 或另启方效。欲固于一处：于 `.claude/settings.local.json` 加 `"outputStyle": "ya"`。
+`/config` → Output style → **wen**，`/clear` 或另启方效。欲固于一处：于 `.claude/settings.local.json` 加 `"outputStyle": "wen"`。
 
 ## 理
 
@@ -24,6 +24,6 @@ token 非所求，未之验也，阅者自判：
 
 ## 本
 
-《诗经》赐名，《马氏文通》赐法。文法参 [ctext 原文](https://ctext.org/wiki.pl?if=gb&res=496878&remap=gb) 及本仓 [`文法要略.md`](references/文法要略.md)（LLM 所纂，非原帙）。样式之体：[`ya.md`](output-styles/ya.md)。
+《马氏文通》赐法。文法参 [ctext 原文](https://ctext.org/wiki.pl?if=gb&res=496878&remap=gb) 及本仓 [`文法要略.md`](references/文法要略.md)（LLM 所纂，非原帙）。样式之体：[`wen.md`](output-styles/wen.md)。
 
 MIT，见 [`LICENSE`](LICENSE)。

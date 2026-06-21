@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""雅（ya）安装之脚本——通 Linux、macOS、Windows 三平台。
-将 output-styles/ya.md 抄至 ~/.claude/output-styles/ya.md。
+"""文（wen）安装之脚本——通 Linux、macOS、Windows 三平台。
+将 output-styles/wen.md 抄至 ~/.claude/output-styles/wen.md。
 用法：python3 install.py   （Windows 下或作 `python install.py`）
 """
 import shutil
@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-SRC = HERE / "output-styles" / "ya.md"
+SRC = HERE / "output-styles" / "wen.md"
 
 
 def main() -> int:
@@ -18,12 +18,12 @@ def main() -> int:
         return 1
     dest_dir = Path.home() / ".claude" / "output-styles"
     dest_dir.mkdir(parents=True, exist_ok=True)
-    dest = dest_dir / "ya.md"
+    dest = dest_dir / "wen.md"
     shutil.copy2(SRC, dest)
     dest.chmod(0o644)  # 勿袭源文件之宽限（/mnt/g 等挂载多为 777）
-    print(f"✓ 雅已安置：{dest}")
+    print(f"✓ 文已安置：{dest}")
     print(f"  平台：{sys.platform}")
-    print("  其后：于 Claude Code 行 /config → Output style → 择 ya；/clear 或新会话方生效。")
+    print("  其后：于 Claude Code 行 /config → Output style → 择 wen；/clear 或新会话方生效。")
     return 0
 
 
