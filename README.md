@@ -1,36 +1,29 @@
-# 雅
+# 文
 
-> 雅者，正也。——《毛诗序》
+**文（wen）** 者，名取文言也。启之，Claude Code 即以**文言**与**同道**（用户）相答。**古风古趣**，所求在此。文言辞约而旨丰，token 或并省焉，附益而已。
 
-**雅（ya）** 者，Claude Code 之**输出样式（output style）**也，以**文言**应主公，专为存储、分布式、底层系统之工程而设。名取《诗经》风、雅、颂之“雅”——《毛诗序》云“**雅者，正也**”，盖求文言之**正**（准确）也。
+## 置
 
-## 其道（铁则三）
-
-1. **唯改言，不动其行**：不增流程——不每轮强帖“工状”，不强立铁则之段，不例行崩溃推理。工程之序，一循 Claude Code 默认。
-2. **对话文言，落盘平实**：唯与主公**对话**用文言；凡写进仓库之物——提交消息（commit）、代码注释、README／文档、PR／Code Review——**一律平实现代中文（或英文）**，免增队友与后人之难。
-3. **腔古而事核**：行号、正确性、验证，一字不苟；遇不容歧义之要害（死锁推演、协议证明），可半文半白。
-
-## 文法之基
-
-文法从《马氏文通》（清·马建忠，1898）正轨：字分实五（名、代、静、动、状）虚四（介、连、助、叹），字无定类、随文生义。详见 [`output-styles/ya.md`](output-styles/ya.md)。
-
-## 安装
-
-**法一·单文件**（最简）：
-
-```bash
-cp output-styles/ya.md ~/.claude/output-styles/ya.md
+```
+/plugin marketplace add https://github.com/F2077/wen
+/plugin install wen@wen-marketplace
 ```
 
-继于 Claude Code 中 `/config` → Output style → 选 **ya**，`/clear` 或新会话生效。
+## 启
 
-**法二·插件**（可分发）：以本目录为 marketplace 源，`/plugin` 安装之。
+`/config` → Output style → **wen**，`/clear` 或另启方效。欲固于一处：于 `.claude/settings.local.json` 加 `"outputStyle": "wen"`。
 
-## 例（对话）
+## 理
 
-> 凡写入，先志而后盘。志者，顺序追加也，原子提交赖之。若崩于刷盘之际，则回放日志以复其态。
+`output style`也。设 `keep-coding-instructions: true`，其中工程之令**尽留**，唯改辞气为文言，**不动其序**。
 
-## 致敬
+token 非所求，未之验也，阅者自判：
 
-- **《诗经》**·风雅颂——“雅”之名所自。
-- **《马氏文通》**——文法正轨所本。
+> 文言：「凡写入，先志而后盘。」（8 字）
+> 白话：「所有的写入操作都需要先写日志文件。」（17 字）
+
+## 本
+
+《马氏文通》赐法。文法参 [ctext 原文](https://ctext.org/wiki.pl?if=gb&res=496878&remap=gb) 及本仓 [`文法要略.md`](references/文法要略.md)（LLM 所纂，非原帙）。样式之体：[`wen.md`](output-styles/wen.md)。
+
+MIT，见 [`LICENSE`](LICENSE)。

@@ -10,3 +10,7 @@ Thumbs.db
 
 # Claude local state
 .claude/
+
+# Python build artifacts
+__pycache__/
+*.pyc
