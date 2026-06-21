@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "wen",
-      "description": "文 — 文言（Classical Chinese）dialogue plugin. Speak 文言 with your 同道 for a classical, elegant feel (古风古趣). Auto-injects via SessionStart hook — install and go, no manual setup needed.",
+      "description": "文 — 文言（Classical Chinese）dialogue plugin. Speak 文言 with your 同道 for a classical, elegant feel (古风雅趣). Auto-injects via SessionStart hook — install and go, no manual setup needed.",
       "source": ".",
       "category": "productivity",
       "homepage": "https://github.com/F2077/wen"
